@@ -16,7 +16,7 @@ const getHumanChoice = () => {
 
 const playRound = (humanChoice, computerChoice) => {
   if (humanChoice == computerChoice) {
-    return`Both chose ${humanChoice}: it's a tie!`
+    return`Both chose ${humanChoice}: it's a tie!`;
   }
   
   if (
@@ -32,7 +32,13 @@ const playRound = (humanChoice, computerChoice) => {
   }
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+const playGame = (totalRounds) => {
+  for (let i = 0; i < totalRounds; i++) {
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice(); 
 
-console.log(playRound(humanChoice, computerChoice));
+    console.log(playRound(humanChoice, computerChoice));
+  }
+}
+
+playGame(3);
