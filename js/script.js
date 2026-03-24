@@ -1,3 +1,6 @@
+let computerScore = 0;
+let humanScore = 0;
+
 const getComputerChoice = () =>  {
   const choices = ['rock', 'paper', 'scissors'];
   const randomNumber = Math.floor(Math.random() * 3);
@@ -6,10 +9,30 @@ const getComputerChoice = () =>  {
 }
 
 const getHumanChoice = () => {
-  const choices = ['rock', 'paper', 'scissors'];
-  const answer = Number(prompt('Select you move: 0 = Rock | 1 = Paper | 2 = Scissors '));
+  const answer = prompt('Write your choice (ROCK, PAPER or SCISSORS): ').toLowerCase();
 
-  return choices[answer] ?? 'Invalid option';
+  return answer;
 }
 
-console.log(getHumanChoice())
+const playRound = (humanChoice, computerChoice) => {
+  if (humanChoice == computerChoice) {
+    return`Both chose ${humanChoice}: it's a tie!`
+  }
+  
+  if (
+    (humanChoice == 'rock' && computerChoice == 'scissors') ||
+    (humanChoice == 'paper' && computerChoice == 'rock') ||
+    (humanChoice == 'scissors' && computerChoice == 'paper')
+  ) {
+    humanScore++;
+    return `${humanChoice} x ${computerChoice}: You won!`;
+  } else {
+    computerScore++;
+    return`${humanChoice} x ${computerChoice}: Computer won!`;
+  }
+}
+
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+console.log(playRound(humanChoice, computerChoice));
