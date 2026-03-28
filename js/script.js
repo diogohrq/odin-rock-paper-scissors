@@ -31,14 +31,3 @@ const playRound = (humanChoice, computerChoice) => {
     return`${humanChoice} x ${computerChoice}: Computer won!`;
   }
 }
-
-const playGame = (totalRounds) => {
-  for (let i = 0; i < totalRounds; i++) {
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice(); 
-
-    console.log(playRound(humanChoice, computerChoice));
-  }
-}
-
-playGame(3);
